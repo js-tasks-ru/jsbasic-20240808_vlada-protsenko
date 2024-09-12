@@ -7,25 +7,24 @@ function initCarousel() {
   let position = 0;
 
   arrowLeft.style.display = "none";
+  
 
   arrowRight.addEventListener("click", function () {
       position += widthSlide;
       carouselFrame.style.transform = `translateX(-${position}px)`;
       arrowLeft.style.display = "";
-      if (position == 3 * widthSlide) {
-        arrowRight.style.display = "none";
-      } else if (position == 0){
-        arrowLeft.style.display = "none";
-      } else {
-        arrowRight.style.display = "";
-        arrowLeft.style.display = "";
-      }
+      isVisible (position);
     }
   )
 
   arrowLeft.addEventListener("click", function () {
       carouselFrame.style.transform = `translateX(-${(position - widthSlide)}px)`;
       position -= widthSlide;
+      isVisible (position);
+    }
+  )
+
+    function isVisible (position) {
       if (position == 3 * widthSlide) {
         arrowRight.style.display = "none";
       } else if (position == 0){
@@ -35,5 +34,4 @@ function initCarousel() {
         arrowLeft.style.display = "";
       }
     }
-  )
 }  
